@@ -1,37 +1,82 @@
 # rtf2txt
 
-#### 介绍
-RTF格式内容转为txt文本
+#### 简介
+主要函数为RtfToTxt，功能为识别RTF格式内容中的文本
 
-#### 软件架构
-软件架构说明
+#### 函数
+public static string RtfToTxt(string rtf);
+[参数rtf] RTF格式的文本
+[返回] 识别到的纯文本内容
+
+#### 测试代码
+``` C#
+namespace TtfToTxt
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Random r = new Random();
+            char[] chs = new char[32];
+            for (int i = 0; i < chs.Length; ++i)
+                chs[i] = (char)r.Next(1, 127);
+
+            Test(new string(chs));//随机字符串
+            Test("测试\r\\\t\n\"字符串\'");//可以换成其他内容测试
+
+            Console.Read();
+        }
+        //简单的 txt->Rtf->txt 测试，跟利用System.Windows.Forms.RichTextBox转换的结果进行比较
+        static void Test(string txt) {
+            System.Windows.Forms.RichTextBox rtb = new System.Windows.Forms.RichTextBox();
+            rtb.Text = txt;
+            //通过RichTextBox转为Rtf格式文本
+            var result = rtf2txt.RtfToTxt(rtb.Rtf);
+
+            Console.WriteLine("RTF文本：\n" + rtb.Rtf + "\n");
+
+            Console.WriteLine("原始文本：\n" + txt);
+            Console.WriteLine("识别文本：\n" + result);
+            Console.WriteLine("\n相等比较：" + (rtb.Text == result)+"\n");
+        }
+    }
+}
+```
+
+#### 输出结果
+
+``` C#
+RTF文本：
+{\rtf1\ansi\ansicpg936\deff0\nouicompat\deflang1033\deflangfe2052{\fonttbl{\f0\fnil\fcharset134 \'cb\'ce\'cc\'e5;}}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1
+\pard\f0\fs18\lang2052\'18a\'16n,"?t\'04:3Fo\'04s@/"\'03\'086i+ NOP\'1c\}\'1dc\'1d\par
+}
 
 
-#### 安装教程
+原始文本：
+an,"?t:3Fos@/6i+ NOP}c
+识别文本：
+an,"?t:3Fos@/6i+ NOP}c
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+相等比较：True
 
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+RTF文本：
+{\rtf1\ansi\ansicpg936\deff0\nouicompat\deflang1033\deflangfe2052{\fonttbl{\f0\fnil\fcharset134 \'cb\'ce\'cc\'e5;}}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1
+\pard\f0\fs18\lang2052\'b2\'e2\'ca\'d4\par
+\\\tab\par
+"\'d7\'d6\'b7\'fb\'b4\'ae'\par
+}
 
 
-#### 码云特技
+原始文本：
+\
+"字符串'
+识别文本：
+测试
+\
+"字符串'
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5.  码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+相等比较：True
+```
