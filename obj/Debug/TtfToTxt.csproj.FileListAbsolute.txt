@@ -1,0 +1,7 @@
+C:\CTF\Projects\git\rtf2txt\bin\Debug\TtfToTxt.exe.config
+C:\CTF\Projects\git\rtf2txt\bin\Debug\TtfToTxt.exe
+C:\CTF\Projects\git\rtf2txt\bin\Debug\TtfToTxt.pdb
+C:\CTF\Projects\git\rtf2txt\obj\Debug\TtfToTxt.csprojAssemblyReference.cache
+C:\CTF\Projects\git\rtf2txt\obj\Debug\TtfToTxt.csproj.CoreCompileInputs.cache
+C:\CTF\Projects\git\rtf2txt\obj\Debug\TtfToTxt.exe
+C:\CTF\Projects\git\rtf2txt\obj\Debug\TtfToTxt.pdb
