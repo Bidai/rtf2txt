@@ -10,7 +10,7 @@ public static string RtfToTxt(string rtf);
 
 #### 测试代码
 ``` C#
-namespace TtfToTxt
+namespace RtfToTxt
 {
     class Program
     {
